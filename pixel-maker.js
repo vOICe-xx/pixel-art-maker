@@ -1,10 +1,9 @@
 const pixWindow = document.getElementById("Pixel-maker");
-const Gridinp = document.getElementById("Gridinp");
-const vGridinp = Gridinp.value;
-function gridCreate(height, width){
-	
-	
+const btnCreate = document.getElementById("Create");
+const GridinpH = document.getElementById("GridinpH");
+const GridinpW = document.getElementById("GridinpW");
 
+function gridCreate(height, width){
 	for (i = 1; i <= height; i++){
 		var pRow = document.createElement("div");
 		pixWindow.appendChild(pRow);
@@ -15,4 +14,10 @@ function gridCreate(height, width){
 		}
 	}	
 }
-gridCreate(4, 4);
+btnCreate.addEventListener("click", function(event){
+var height = GridinpH.value;
+var width = GridinpW.value;
+pixWindow.innerHTML = '';
+gridCreate(height, width);
+console.log(height);
+});
