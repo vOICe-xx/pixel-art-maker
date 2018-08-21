@@ -13,26 +13,8 @@ function gridCreate(height, width){ //Создание канваса
 			pRow.appendChild(pix); //Добавление ячейки
 		}
 	}
-	var pixels = document.querySelectorAll(".Pixel"); //Сбор всех пикселей в канвасе
-	for (let j = 0; j < pixels.length; j++){
-		var isDown = false;
-		pixels[j].addEventListener('mouseenter', function(){
-			var curPixel = event.target;
-			pixels[j].addEventListener('mousedown', function(){
-				isDown = true;
-				console.log('down');
-				curPixel.id = curColor;
-			});
-			pixels[j].addEventListener('mouseup', function(){
-				isDown = false;
-				console.log('up');
-			});
-			if (isDown){
-				curPixel.id = curColor;
-			};
-		}); 
- 	}; 
 };
+
 
 btnCreate.addEventListener("click", function(){ //Кнопка создания канваса
 var height = GridinpH.value;
@@ -41,7 +23,32 @@ pixWindow.innerHTML = '';
 gridCreate(height, width);
 });
 
-var colors = document.querySelectorAll(".ColorPall"); //Сбор цветов в палитре
+btnCreate.addEventListener('click', function(){
+	var pixels = document.querySelectorAll(".Pixel"); //Сбор всех пикселей в канвасе
+	for (let j = 0; j < pixels.length; j++){
+		var isDown = false;
+		pixels[j].addEventListener('mouseover', function(){ //Вход в пиксель
+			var curPixel = event.target;
+			pixels[j].addEventListener('mousedown', function(){ //Меняем цвет при нажатии кнопки
+				isDown = true;
+				curPixel.style.background = curColor;
+			});
+			pixels[j].addEventListener('mouseup', function(){ //Выключаем рисование
+				isDown = false;
+			});
+			if (isDown){
+				curPixel.style.background = curColor; //Меняем цвет при нажатой кнопке
+			};
+		}); 
+ 	}; 
+});
+
+var curColor = 'black';
+document.getElementById('color').addEventListener('change', function(){
+	curColor = event.target.value;
+});
+
+/* var colors = document.querySelectorAll(".ColorPall"); //Сбор цветов в палитре
 var curColor = '';
 for (let i = 0; i < colors.length; i++){
   colors[i].addEventListener('click', function(){
@@ -49,4 +56,4 @@ for (let i = 0; i < colors.length; i++){
     curColor = this.id;
 		curColorBox[0].id = this.id;
    });
-};
+}; */
