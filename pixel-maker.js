@@ -16,7 +16,7 @@ function gridCreate(height, width){ //Создание канваса
 	var pixels = document.querySelectorAll(".Pixel"); //Сбор всех пикселей в канвасе
 	for (let j = 0; j < pixels.length; j++){
 		var isDown = false;
-		pixels[j].addEventListener('mouseover', function(){
+		pixels[j].addEventListener('mouseenter', function(){
 			var curPixel = event.target;
 			pixels[j].addEventListener('mousedown', function(){
 				isDown = true;
