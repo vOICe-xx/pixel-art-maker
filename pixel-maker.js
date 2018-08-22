@@ -48,7 +48,7 @@ btnCreate.addEventListener('click', function(){
 });
 
 var curColor = 'black';
-document.getElementById('color').addEventListener('change', function(){
+document.getElementById('Color').addEventListener('change', function(){
 	curColor = event.target.value;
 });
 
