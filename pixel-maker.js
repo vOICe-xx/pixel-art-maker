@@ -31,7 +31,13 @@ btnCreate.addEventListener('click', function(){
 			var curPixel = event.target;
 			pixels[j].addEventListener('mousedown', function(){ //Меняем цвет при нажатии кнопки
 				isDown = true;
-				curPixel.style.background = curColor;
+				if (event.which == 3){
+					curPixel.style.background = 'white';
+				}
+				else {
+					curPixel.style.background = curColor;
+				};
+				console.log(event.which);
 			});
 			pixels[j].addEventListener('mouseup', function(){ //Выключаем рисование
 				isDown = false;
