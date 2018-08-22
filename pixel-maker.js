@@ -15,7 +15,6 @@ function gridCreate(height, width){ //Создание канваса
 	}
 };
 
-
 btnCreate.addEventListener("click", function(){ //Кнопка создания канваса
 var height = GridinpH.value;
 var width = GridinpW.value;
@@ -37,7 +36,6 @@ btnCreate.addEventListener('click', function(){
 				else {
 					curPixel.style.background = curColor;
 				};
-				console.log(event.which);
 			});
 			pixels[j].addEventListener('mouseup', function(){ //Выключаем рисование
 				isDown = false;
