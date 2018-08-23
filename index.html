@@ -28,7 +28,7 @@
 		}
 		#Palette {
 			display: flex;
-			justify-content: center;
+			justify-content: flex-start;
 			align-items: center;
 			border-top: 1px solid lightgray;
 			width: 100%;
@@ -48,14 +48,16 @@
 		#Gridinp {
 			display: flex;
 			justify-content: center;
+			color: white;
+			font-size: 20px;
 		}
-		.ColorPall {
+<!-- 		.ColorPall {
 			height: 20px;
 			width: 20px;
 			margin: 2px;
 			border-radius: 10px;
 			border: 1px solid lightgray;
-		}
+		} -->
 <!--#Blue {background-color: blue;}
 		#Black {background-color: black;}
 		#Red {background-color: red;}
@@ -80,54 +82,61 @@
 		#Wheat {background-color: Wheat;}		
 		#Pink {background-color: Pink;}		
 		#Green {background-color: green;}
+		.CurColor {
+			width: 30px;
+			height: 30px;
+		}-->
 		#CurColorBox {
 			display: flex;
 			justify-content: center;
 			align-items: center;
 			width: 10%;
 			height: 100%;
+			min-height: 60px;
+<!-- 			margin-left: 5px; -->
+			align-self: stretch;
 		}
-		.CurColor {
-			width: 30px;
-			height: 30px;
-		}-->
+		#Tools {
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			width: 80%;
+			height: 100%;
+			margin-left: 5px;
+		}
+		.Btn {
+			margin: 5px;
+		}
+		input[type='color'] {
+			position: relative;
+			width: 35px;
+			height: 35px;
+			opacity: 0;
+		}
+		input[type='number'] {
+			width: 50px;
+		}
+		#ColorWrap {
+			border-radius: 25px;
+			border: 1px solid lightgray;
+		}
     </style>
   </head>
   <BODY ondragstart="return false;" ondrop="return false;" oncontextmenu="return false;">
 		<div id="Main-block">
 			<div id="Pixel-maker"></div>
 			<div id="Palette">
-<!-- 				<div id="CurColorBox"><div class="CurColor"></div></div>
-				<div class="ColorPall" id="Blue"></div>
-				<div class="ColorPall" id="Green"></div>
-				<div class="ColorPall" id="Black"></div>
-				<div class="ColorPall" id="Red"></div>
-				<div class="ColorPall" id="Yellow"></div>				
-				<div class="ColorPall" id="Orange"></div>
-				<div class="ColorPall" id="SkyBlue"></div>
-				<div class="ColorPall" id="Purple"></div>
-				<div class="ColorPall" id="Aqua"></div>
-				<div class="ColorPall" id="Fuchsia"></div>
-				<div class="ColorPall" id="Gray"></div>
-				<div class="ColorPall" id="Lime"></div>
-				<div class="ColorPall" id="Maroon"></div>
-				<div class="ColorPall" id="Navy"></div>
-				<div class="ColorPall" id="Olive"></div>
-				<div class="ColorPall" id="Silver"></div>
-				<div class="ColorPall" id="Teal"></div>
-				<div class="ColorPall" id="White"></div>
-				<div class="ColorPall" id="Brown"></div>
-				<div class="ColorPall" id="Magenta"></div>
-				<div class="ColorPall" id="Orchid"></div>
-				<div class="ColorPall" id="Violet"></div>
-				<div class="ColorPall" id="Wheat"></div>
-				<div class="ColorPall" id="Pink"></div> -->
-				<div><input id='Color' type="color"></div>
-				<div><button id='Fill'>Заливка</button></div>
+ 				<div id="CurColorBox">
+					<div id='ColorWrap'><input id='Color' type="color"></div>
+				</div>
+				<div id="Tools">
+					<div><button id='Fill' class='Btn'>Fill</button></div>
+					<div><button id='Brush' class='Btn'>Brush</button></div>
+				</div> 
 			</div>
 		</div>
 		<div id="Gridinp">
-			<div><input id="GridinpH" type="number" value='64'></div>
+			<div><input id="GridinpH" type="number" value='64'>x</div>
 			<div><input id="GridinpW" type="number" value='64'></div>
 			<div><button id="Create">Create</button></div>
 		</div>

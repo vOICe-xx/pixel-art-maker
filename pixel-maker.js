@@ -22,7 +22,7 @@ pixWindow.innerHTML = '';
 gridCreate(height, width);
 });
 
-btnCreate.addEventListener('click', function(){
+pixWindow.addEventListener('mouseenter', function brush(){
 	var pixels = document.querySelectorAll(".Pixel"); //Сбор всех пикселей в канвасе
 	for (let j = 0; j < pixels.length; j++){
 		var isDown = false;
@@ -48,10 +48,19 @@ btnCreate.addEventListener('click', function(){
 });
 
 var curColor = 'black';
-document.getElementById('Color').addEventListener('change', function(){
+var colorPicker = document.getElementById('Color');
+var colorWrap = document.getElementById('ColorWrap');
+	colorWrap.style.background = curColor;
+colorPicker.addEventListener('change', function(){
 	curColor = event.target.value;
+	colorWrap.style.background = curColor;
 });
 
+var btnFill = document.getElementById('Fill');
+var curTool = null;
+	btnFill.addEventListener('click', function(){
+		
+	});
 /* var colors = document.querySelectorAll(".ColorPall"); //Сбор цветов в палитре
 var curColor = '';
 for (let i = 0; i < colors.length; i++){
