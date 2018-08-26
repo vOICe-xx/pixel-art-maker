@@ -12,7 +12,7 @@
 		.Pixel {
 			height: 8px;
 			width: 8px;
-			border: 1px solid lightgray;
+			border: 1px solid #f1eeee;
 		}
 		#Main-block {
 			display: flex;
@@ -51,41 +51,6 @@
 			color: white;
 			font-size: 20px;
 		}
-<!-- 		.ColorPall {
-			height: 20px;
-			width: 20px;
-			margin: 2px;
-			border-radius: 10px;
-			border: 1px solid lightgray;
-		} -->
-<!--#Blue {background-color: blue;}
-		#Black {background-color: black;}
-		#Red {background-color: red;}
-		#Yellow {background-color: Yellow;}
-		#Orange {background-color: Orange;}		
-		#SkyBlue {background-color: SkyBlue;}		
-		#Purple {background-color: Purple;}		
-		#Aqua {background-color: Aqua;}		
-		#Fuchsia {background-color: Fuchsia;}		
-		#Gray {background-color: Gray;}		
-		#Lime {background-color: Lime;}		
-		#Maroon {background-color: Maroon;}		
-		#Navy {background-color: Navy;}		
-		#Olive {background-color: Olive;}		
-		#Silver {background-color: Silver;}		
-		#Teal {background-color: Teal;}		
-		#White {background-color: White;}		
-		#Brown {background-color: Brown;}		
-		#Magenta {background-color: Magenta;}
-		#Orchid {background-color: Orchid;}		
-		#Violet {background-color: Violet;}		
-		#Wheat {background-color: Wheat;}		
-		#Pink {background-color: Pink;}		
-		#Green {background-color: green;}
-		.CurColor {
-			width: 30px;
-			height: 30px;
-		}-->
 		#CurColorBox {
 			display: flex;
 			justify-content: center;
@@ -93,7 +58,6 @@
 			width: 10%;
 			height: 100%;
 			min-height: 60px;
-<!-- 			margin-left: 5px; -->
 			align-self: stretch;
 		}
 		#Tools {
@@ -120,9 +84,15 @@
 			border-radius: 25px;
 			border: 1px solid lightgray;
 		}
+		#SaveLoad {
+			display: flex;
+			flex-direction: column;
+			width: 10%;
+			height: 100%;
+		}
     </style>
   </head>
-  <BODY ondragstart="return false;" ondrop="return false;" oncontextmenu="return false;">
+  <body ondragstart="return false;" ondrop="return false;" oncontextmenu="return false;">
 		<div id="Main-block">
 			<div id="Pixel-maker"></div>
 			<div id="Palette">
@@ -133,6 +103,10 @@
 					<div><button id='Fill' class='Btn'>Fill</button></div>
 					<div><button id='Brush' class='Btn'>Brush</button></div>
 				</div> 
+				<div id="SaveLoad">
+					<div><button id='Save'>Save</button></div>
+					<div><button id='Load'>Load</button></div>
+				</div>
 			</div>
 		</div>
 		<div id="Gridinp">
