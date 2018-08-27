@@ -9,6 +9,8 @@ const colorWrap = document.getElementById('ColorWrap');
 const btnLoad = document.getElementById('Load');
 const btnSave = document.getElementById('Save');
 colorWrap.style.background = colorPicker.value;
+var height = GridinpH.value;
+var width = GridinpW.value;
 var pixels = null;
 var curColor = 'black';
 var curTool = 1;
@@ -16,11 +18,21 @@ var isDown = null;
 var curPixel = null;
 var mouBtn = null;
 var saveFile = {
-	'pixels': []
+	'pixels': [],
+	'height': 0,
+	'width': 0
 };
 var loadFile = {
 	'pixels': []
 };
+
+GridinpH.addEventListener('change', function(){
+	height = GridinpH.value;
+});
+
+GridinpW.addEventListener('change', function(){
+	width = GridinpW.value;
+});
 
 colorPicker.addEventListener('change', function(){
 	curColor = event.target.value;
@@ -28,11 +40,9 @@ colorPicker.addEventListener('change', function(){
 });
 
 
-var gridCreate = function gridCreate(height, width){ //Создание канваса
+var gridCreate = function gridCreate(){ //Создание канваса
 pixWindow.innerHTML = '';
 pixels = null;
-var height = GridinpH.value;
-var width = GridinpW.value;
 	for (i = 1; i <= height; i++){ 
 		var pRow = document.createElement("div");
 		pixWindow.appendChild(pRow); //Добавление строки 
@@ -94,26 +104,47 @@ var brush = function brush(){
 	};
 }; 
 
+var save = function save(){
+	saveFile.pixels = [];
+	for (let j = 0; j < pixels.length; j++){
+		saveFile.pixels.push({id: j, back: pixels[j].style.background});
+	};
+	saveFile.height = height;
+	saveFile.width = width;
+	localStorage.setItem('session', JSON.stringify(saveFile));
+	console.log(saveFile);
+};
+
+var load = function load(){
+	loadFile = null;
+	loadFile = JSON.parse(localStorage.getItem('session'));
+	console.log(loadFile);
+	pixWindow.innerHTML = '';
+	pixels = null;
+		for (i = 1; i <= loadFile.height; i++){
+			var pRow = document.createElement("div");
+			pixWindow.appendChild(pRow); //Добавление строки
+			for (j = 0; j <= loadFile.width - 1; j++){
+				var pix = document.createElement("div");
+				pix.classList.add("Pixel");
+				pix.id = loadFile.pixels[j].id;
+				pix.style.background = loadFile.pixels[j].back;
+				pRow.appendChild(pix); //Добавление ячейки
+			}
+		loadFile.pixels.splice(0, 64);
+		}
+	pixels = document.querySelectorAll(".Pixel"); //Сбор всех пикселей в канвасе
+};
+
 btnBrush.addEventListener('click', switcher);
 
 btnFill.addEventListener('click', switcher);
 
-btnSave.addEventListener('click', function(){
-	for (let j = 0; j < pixels.length; j++){
-		saveFile.pixels.push({j: pixels[j].style.background});
-	};
-	localStorage.setItem('session', JSON.stringify(saveFile));
-	console.log(saveFile);
-});
+btnSave.addEventListener('click', save);
 
-btnLoad.addEventListener('click', function(){
-	loadFile = JSON.parse(localStorage.getItem('session'));
-	for (let j = 0; j < loadFile.length; j++){
-		
-	};
-	console.log(loadFile);
+btnLoad.addEventListener('click', load);
+
 
 /* 	loadFile.pixels.push(JSON.parse(localStorage.getItem('session')));
 
 	pixWindow.innerHTML = loadFile.pixels[0]; */
-});
