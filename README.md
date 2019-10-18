@@ -2,7 +2,7 @@
 
 My solution of [this](https://github.com/gSchool/pixel-art-maker) exercise: https://voice-xx.github.io/pixel-art-maker/
 
-![](preview.png)
+![Pixel Art Maker](preview.PNG)
 
 What it does:
 1. Start with a blank canvas of pixels.
