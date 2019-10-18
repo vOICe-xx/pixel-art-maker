@@ -13,8 +13,8 @@ var height = GridinpH.value;
 var width = GridinpW.value;
 var pixels = null;
 var curColor = 'black';
-var curTool = 1;
-var isDown = null;
+var isFill = false;
+var isDown = false;
 var curPixel = null;
 var mouBtn = null;
 var saveFile = {
@@ -38,7 +38,15 @@ colorPicker.addEventListener('change', function(){
 	curColor = event.target.value;
 	colorWrap.style.background = curColor;
 });
+document.addEventListener('mousedown', function(){
+	isDown = true;
+	mouBtn = event.button;
+});
 
+document.addEventListener('mouseup', function(){
+	isDown = false;
+	mouBtn = event.button;
+});
 
 var gridCreate = function gridCreate(){ //Создание канваса
 pixWindow.innerHTML = '';
@@ -57,52 +65,49 @@ pixels = document.querySelectorAll(".Pixel"); //Сбор всех пикселе
 
 gridCreate();
 
-var switcher = function switcher(){
-	if (curTool == 0){
-		fill();
-		console.log(curTool);
-	} else {
-		brush();
-		console.log(curTool);
-	};
-};
+/* var switcher = function switcher(){
+	switch (isFill) {
+		case false:
+			brush();
+			return 1;
+		case true:
+			fill();
+			return 0;
+}; */
 
 var fill = function fill(){
-	curTool = 1;
-	for (let i = 0; i < pixels.length; i++){
-		pixels[i].addEventListener('click', function(){
-			var toFill = [];
-			var firstToFill = i;
-			var sameColor = pixels[i].style.background;
-				console.log(sameColor);
-				
-		});
+	if (isFill == true){
+		for (let i = 0; i < pixels.length; i++){
+			pixels[i].addEventListener('click', function(){
+				var toFill = [];
+				var firstToFill = i;
+				var sameColor = pixels[i].style.background;	
+			});
+		};
 	};
 };
 
 btnCreate.addEventListener("click", gridCreate);
 
 var brush = function brush(){
-	curTool = 0;
-	pixWindow.addEventListener('mousedown', function(){ 
-		isDown = true; 
-		mouBtn = event.which;
-	});
-	pixWindow.addEventListener('mouseup', function(){ //Выключаем рисование
-		isDown = false;
-	});
-	for (let j = 0; j < pixels.length; j++){
-			pixels[j].addEventListener('mouseenter', function(){
-			curPixel = event.target;
-			if (isDown){
-				curPixel.style.background = curColor; //Меняем цвет при нажатой кнопке
-				if (mouBtn == 3){
-				curPixel.style.background = 'white';
+	if (isFill == false){
+		for (let j = 0; j < pixels.length; j++){
+			pixels[j].addEventListener('mousemove', function(){
+				curPixel = event.target;
+				if (isDown){
+					if (mouBtn == 2){
+						curPixel.style.background = 'white';
+					} else {
+						curPixel.style.background = curColor; //Меняем цвет при нажатой кнопке
+					};
 				};
-			};
-		});
+			});
+		};
+	} else {
+		return;
 	};
 }; 
+
 
 var save = function save(){
 	saveFile.pixels = [];
@@ -136,9 +141,10 @@ var load = function load(){
 	pixels = document.querySelectorAll(".Pixel"); //Сбор всех пикселей в канвасе
 };
 
-btnBrush.addEventListener('click', switcher);
 
-btnFill.addEventListener('click', switcher);
+btnBrush.addEventListener('click', function(){isFill = false; switcher});
+
+btnFill.addEventListener('click', function(){isFill = true; switcher});
 
 btnSave.addEventListener('click', save);
 
