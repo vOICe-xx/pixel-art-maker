@@ -43,6 +43,10 @@ colorPicker.addEventListener('change', function(){
 	color.classList.add("Color");
 	color.style.background = curColor;
 	colorsArr.unshift(color);
+	color.addEventListener('click', function(){
+		curColor = color.style.background;
+		colorWrap.style.background = curColor;
+	});
 	colorsArr.pop();
 	console.log(colorsArr);
 	console.log(colors.childNodes);
@@ -100,16 +104,17 @@ var brush = function brush(){
 				if (isDown){
 					if (mouBtn == 2){
 						curPixel.style.background = 'white';
+						curPixel.style.border = "1px solid #f1eeee";
 					} else {
+						let curBorder = "1px solid" + curColor;
 						curPixel.style.background = curColor; //Меняем цвет при нажатой кнопке
+						curPixel.style.border = curBorder;
 					};
 				};
 			});
 		};
-	} else {
-		return;
-	};
-}; 
+	}; 
+};
 
 brush();
 

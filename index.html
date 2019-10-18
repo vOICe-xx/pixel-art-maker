@@ -48,8 +48,14 @@
 		#Gridinp {
 			display: flex;
 			justify-content: center;
+			align-items: center;
 			color: white;
 			font-size: 20px;
+			height: 45px;
+			width: 200px;
+			background-color: white;
+			border-radius: 0px 0px 4px 4px;	
+			border: 1px solid lightgray;			
 		}
 		#CurColorBox {
 			display: flex;
@@ -70,6 +76,8 @@
 		}
 		.Btn {
 			margin: 3px;
+			align-items: center;
+			justify-content: center;
 		}
 		.Color {
 			margin: 2px;
@@ -102,6 +110,8 @@
 		}
 		#SaveLoad {
 			display: flex;
+			justify-content: center;
+			align-items: center;
 			flex-direction: column;
 			width: 10%;
 			height: 100%;
@@ -118,7 +128,7 @@
 				<div id="Colors"></div>
 				<div id="Tools">
 					<div><button id='Fill' class='Btn'><img src="fill.png" height='16px'></button></div>
-					<div><button id='Brush' class='Btn'><img src="brush.jpg" height='16px'></button></div>
+					<div><button id='Brush' class='Btn'><img src="brush.png" height='16px'></button></div>
 				</div> 
 				<div id="SaveLoad">
 					<div><button id='Save'>Save</button></div>
@@ -127,7 +137,7 @@
 			</div>
 		</div>
 		<div id="Gridinp">
-			<div><input id="GridinpH" type="number" value='64'>x</div>
+			<div><input id="GridinpH" type="number" value='64'><font size="2" color="black" face="Arial"> x&nbsp;</font></div>
 			<div><input id="GridinpW" type="number" value='64'></div>
 			<div><button id="Create">Create</button></div>
 		</div>
