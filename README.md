@@ -1,5 +1,7 @@
 # Pixel Art Maker
 
+My solution of [this](https://github.com/gSchool/pixel-art-maker) exercise: https://voice-xx.github.io/pixel-art-maker/
+
 What it does:
 1. Start with a blank canvas of pixels.
 2. Select a brush color from a palette of colors.
