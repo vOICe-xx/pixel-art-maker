@@ -87,7 +87,7 @@ var fill = function fill(){
 	};
 };
 
-btnCreate.addEventListener("click", gridCreate);
+btnCreate.addEventListener('click', gridCreate);
 
 var brush = function brush(){
 	if (isFill == false){
@@ -108,6 +108,7 @@ var brush = function brush(){
 	};
 }; 
 
+brush();
 
 var save = function save(){
 	saveFile.pixels = [];
@@ -142,9 +143,9 @@ var load = function load(){
 };
 
 
-btnBrush.addEventListener('click', function(){isFill = false; switcher});
+btnBrush.addEventListener('click', function(){isFill = false});
 
-btnFill.addEventListener('click', function(){isFill = true; switcher});
+btnFill.addEventListener('click', function(){isFill = true});
 
 btnSave.addEventListener('click', save);
 
