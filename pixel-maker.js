@@ -8,6 +8,7 @@ const colorPicker = document.getElementById('Color');
 const colorWrap = document.getElementById('ColorWrap');
 const btnLoad = document.getElementById('Load');
 const btnSave = document.getElementById('Save');
+const colors = document.getElementById('Colors');
 colorWrap.style.background = colorPicker.value;
 var height = GridinpH.value;
 var width = GridinpW.value;
@@ -17,6 +18,7 @@ var isFill = false;
 var isDown = false;
 var curPixel = null;
 var mouBtn = null;
+var colorsArr = new Array(28);
 var saveFile = {
 	'pixels': [],
 	'height': 0,
@@ -37,6 +39,17 @@ GridinpW.addEventListener('change', function(){
 colorPicker.addEventListener('change', function(){
 	curColor = event.target.value;
 	colorWrap.style.background = curColor;
+	var color = document.createElement("div");
+	color.classList.add("Color");
+	color.style.background = curColor;
+	colorsArr.unshift(color);
+	colorsArr.pop();
+	console.log(colorsArr);
+	console.log(colors.childNodes);
+	colors.appendChild(colorsArr[0]);
+	if (colors.childElementCount == 29){
+		colors.childNodes[0].remove();
+	};
 });
 document.addEventListener('mousedown', function(){
 	isDown = true;
@@ -64,16 +77,6 @@ pixels = document.querySelectorAll(".Pixel"); //Сбор всех пикселе
 };
 
 gridCreate();
-
-/* var switcher = function switcher(){
-	switch (isFill) {
-		case false:
-			brush();
-			return 1;
-		case true:
-			fill();
-			return 0;
-}; */
 
 var fill = function fill(){
 	if (isFill == true){
@@ -150,8 +153,3 @@ btnFill.addEventListener('click', function(){isFill = true});
 btnSave.addEventListener('click', save);
 
 btnLoad.addEventListener('click', load);
-
-
-/* 	loadFile.pixels.push(JSON.parse(localStorage.getItem('session')));
-
-	pixWindow.innerHTML = loadFile.pixels[0]; */
