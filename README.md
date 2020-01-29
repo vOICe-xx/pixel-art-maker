@@ -11,6 +11,8 @@ What it does:
 4. Repeat step 2.
 
 To do:
+save/load not work
+
 ### Bonus 4
 
 Create a fill tool that will [flood fill](https://en.wikipedia.org/wiki/Flood_fill) boundaries with a chosen paint color. 
